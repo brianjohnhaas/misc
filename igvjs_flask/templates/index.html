@@ -1,0 +1,143 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="//igv.org/web/img/favicon.ico">
+  <title>Integrative Genomics Viewer</title>
+
+  <!-- Bootstrap CSS - for demo only, NOT REQUIRED FOR IGV -->
+  <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
+
+  
+  
+  
+  <link rel="stylesheet" type="text/css"
+        href="/CSS/jquery-ui.css"/>
+
+  
+  <link rel="stylesheet" type="text/css"
+        href="/CSS/font-awesome.min.css"/>
+
+  
+  <link rel="stylesheet" type="text/css" href="/CSS/igv-beta.css">
+
+  
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+  
+  <script type="text/javascript" src="/js/igv-beta.js"></script>
+
+  
+
+  <style type="text/css">
+    #trackList {
+
+    font-family: 'PT Sans', sans-serif;
+    font-size: small;
+    font-weight: 400;
+    }
+
+    div#trackList > div, div#trackList > h3 {
+
+    color: #444;
+    margin-left: 48px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    padding-left: 32px;
+
+    width: 300px;
+    }
+
+    div#trackList > div:hover,
+    div#trackList > div:focus,
+    div#trackList > div:active {
+    cursor: pointer;
+    color: white;
+    background-color: rgba(49, 106, 246, 1);
+    }
+
+
+    .igv-viewport-div {
+    overflow-y: auto;
+    }
+
+  </style>
+
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+
+    var div = $("#myDiv")[0],
+
+    options = {
+    showNavigation: true,
+    showRuler: true,
+    
+    reference: {
+        id: "miniG",
+   		 fastaURL: "/data/minigenome.fa",
+         indexURL: "/data/minigenome.fa.fai",
+    },
+    
+    
+    tracks: [
+
+       {
+    	    url: "/data/align.csorted.bam",
+        	name: 'BAM',
+        	format: "bam",
+        	sourceType: "file",
+  		  	indexed: true,
+    		visibilityWindow: 30000000,
+    		displayMode: "EXPANDED"
+    }
+
+	
+    ,
+
+       {
+    	    url: "/data/align.csorted.tdf",
+        	name: 'TDF',
+        	format: "tdf",
+    sourceType: "file"
+    //,
+  		  	//indexed: true,
+    		//visibilityWindow: 30000000,
+    		//displayMode: "EXPANDED"
+    	}
+
+	
+    
+    ]
+
+    };
+
+
+    igv.createBrowser(div, options);
+
+
+    });
+    
+</script>
+
+  
+</head>   
+<body>
+
+  <div id="fusion_descr"></div>
+
+  <div id="myDiv" style="padding-top: 50px;padding-bottom: 20px;"></div>
+
+
+</body>
+
+
