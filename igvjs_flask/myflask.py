@@ -30,8 +30,9 @@ def get_css(path):
 def send_file_partial(path):
     """
       ############################################
-      ## ** this entire routine was taken from:
+      ## ** this routine was taken from:
       ## https://gist.github.com/lizhiwei/7885684
+      ## and further edited as needed.
       ############################################
 
         Simple wrapper around send_file which handles HTTP 206 Partial Content
@@ -56,13 +57,15 @@ def send_file_partial(path):
     
     if g[0]: byte1 = int(g[0])
     if g[1]: byte2 = int(g[1])
+
+    byte2 = size
     
     length = size - byte1
     if byte2 is not None:
-        length2 = byte2 - byte1
-        if length2 < length:
-            length = length2
-    
+        if byte2 > size:
+            byte2 = size
+        length = byte2 - byte1
+        
     data = None
     with open("data/{}".format(path), 'rb') as f:
         f.seek(byte1)
