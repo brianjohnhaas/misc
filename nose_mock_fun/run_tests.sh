@@ -1,4 +1,4 @@
 #!/bin/bash
 
-nosetests pybase/test/test_pyobj.py
+nosetests -v -s pybase/test/test_pyobj.py
 
