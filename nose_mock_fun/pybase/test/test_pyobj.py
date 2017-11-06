@@ -3,6 +3,7 @@
 from pybase.util import pyobj
 import mock
 from nose import tools as noser
+import sys
 
 @mock.patch('__builtin__.open')
 def pyobj_get_file_contents_test(opener):
@@ -17,6 +18,9 @@ def pyobj_get_file_contents_test(opener):
     myPyObj = pyobj.PyObj()
     ret = myPyObj.get_file_contents('/file/doesnt/exist')
     assert opener.called
+
+    sys.stderr.write("\n\n\tpyobj_get_file_contents_test: {}".format(ret))
+    
     noser.assert_equal("".join(mock_text_array), ret)
 
 
@@ -35,6 +39,9 @@ def pyobj_get_file_contents_via_context_manager_test(opener):
     myPyObj = pyobj.PyObj()
     ret = myPyObj.get_file_contents_via_context_manager('/file/doesnt/exist')
     assert opener.called
+
+    sys.stderr.write("\n\n\tpyobj_get_file_contents_via_context_manager_test: {}".format(ret))
+    
     noser.assert_equal("".join(mock_text_array), ret)
 
 
